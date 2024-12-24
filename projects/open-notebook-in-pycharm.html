@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.6.1, mkdocs-terminal-4.7.0">
+     
+     
+    <link rel="icon" type="image/png" sizes="192x192" href="../img/android-chrome-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="../img/android-chrome-512x512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png" />
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="../img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png" />
+
+
+    
+ 
+<title>Open your Jupyter GCP notebook in Pycharm - Zyrah Bernardino</title>
+
+
+<link href="../css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="../css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="../css/normalize.css" rel="stylesheet">
+<link href="../css/terminal.css" rel="stylesheet">
+<link href="../css/theme.css" rel="stylesheet">
+<link href="../css/theme.tile_grid.css" rel="stylesheet">
+<link href="../css/theme.footer.css" rel="stylesheet">
+<!-- default color palette -->
+<link href="../css/palettes/default.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+
+
+     
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+</head>
+
+<body class="terminal"><div class="container">
+    <div class="terminal-nav">
+        <header class="terminal-logo">
+            <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="/" class="no-style">Zyrah Bernardino</a></div>
+        </header>
+        
+        <nav class="terminal-menu">
+            
+            <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../index.html" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Home</span>
+                    </a>
+                    <meta property="position" content="0">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="../whoami.html" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">whoami</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                
+                
+                
+                    
+                    
+                    
+            </ul>
+            
+        </nav>
+    </div>
+</div>
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><nav>
+  
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../index.html">Home</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="../whoami.html">whoami</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+
+        
+            
+    
+        
+        <span class="
+        
+    
+
+    terminal-mkdocs-side-nav-item--active terminal-mkdocs-side-nav-section-no-index">Projects</span>
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="how-to-build-website.html">How to set up</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        <span class="
+
+    terminal-mkdocs-side-nav-item--active">Open your Jupyter GCP notebook in Pycharm</span>
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+    </ul>
+  
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#step-1-create-your-jupyter-notebook">Step 1: Create your Jupyter notebook</a></li>
+        <li><a href="#step-2-add-your-ssh-key-to-the-vm-instance">Step 2: Add your SSH key to the VM instance</a></li>
+        <li><a href="#step-3-set-up-the-ssh-tunnel-and-interpreter">Step 3: Set up the SSH tunnel and interpreter</a></li>
+        <li><a href="#step-4-create-a-new-jupyter-notebook-and-check-it-works">Step 4: Create a new Jupyter notebook and check it works</a></li>
+        <li><a href="#sources">Sources</a></li>
+        
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+    
+    
+    
+    
+    
+
+<section id="mkdocs-terminal-content">
+    <p>Managed Jupyter notebooks, like GCP's Workbench, is a great way to get started on a project. You can start prototyping 
+and modelling in minutes. However, if you're like me, have imprinted to an IDE (for me it's Pycharm) and can't seem to work 
+on anything else, here's how you can open your managed Jupyter notebook in Pycharm.</p>
+<blockquote>
+<p><strong>Warning:</strong>
+This (interpreters via SSH) only works for the paid Pycharm Professional product.</p>
+<p><strong>Note:</strong>
+We copy the python binaries from the managed instance to your local machine and not ideal if 
+you have bad internet, but this is only for setting up. Pycharm needs the binaries locally so it can do it's thing
+like code completion, debugging, project-wide refactorings, etc.</p>
+</blockquote>
+<h2 id="step-1-create-your-jupyter-notebook">Step 1: Create your Jupyter notebook</h2>
+<p>Open Vertex AI &gt; Workbench &gt; +CREATE NEW &gt; ADVANCED OPTIONS &gt; CREATE</p>
+<p>All the default settings are fine but would beef up the machine type especially if you are doing some ML
+and working with large datasets. If you do use the default service account make sure it has the right permissions.
+You can't change the connected service account after creation. (Would be annoying to start over. Speaking from experience)</p>
+<p><img alt="img_1.png" src="img_1.png" /></p>
+<p>Once created, you can <code>OPEN JUPYTERLAB</code> and checkout all the notebook options.</p>
+<p><img alt="img_2.png" src="img_2.png" /></p>
+<p>The notebook is a VM and the External IP addresses is ephemeral, a new address is assigned everytime it's stop-starts.
+Will need to configure to static and pin down an IP address. <a href="https://console.cloud.google.com/networking/addresses">VPC Network &gt; IP Addresses</a>. 
+Will ask you what to name it. More info <a href="https://cloud.google.com/compute/docs/ip-addresses/configure-static-external-ip-address#console">here</a></p>
+<p><img alt="img_3.png" src="img_3.png" /></p>
+<p>Take note of the external IP address. This is what you will use to connect to the instance.</p>
+<h2 id="step-2-add-your-ssh-key-to-the-vm-instance">Step 2: Add your SSH key to the VM instance</h2>
+<p>If you don't have a SSH key, you can generate one with the following command:</p>
+<pre><code class="language-bash">ssh-keygen -t rsa -f ~/.ssh/jupyter
+</code></pre>
+<p>Copy the public key and paste to a text editor. Update the last string which is the username to <code>jupyter</code>.
+This will allow you to update notebooks you've created locally in the UI (the <code>OPEN JUPYTERLAB</code> option).</p>
+<p><img alt="img_5.png" src="img_5.png" /></p>
+<p>Since this a managed instance by Workbench, you can't add SSH keys in the instance UI. You'll need modify in Workbench 
+via use the gcloud command line tool.</p>
+<pre><code class="language-bash">gcloud workbench instances update &lt;NOTEBOOK-NAME&gt; --metadata=ssh-keys=&quot;jupyter:$(cat ~/.ssh/jupyter.pub)&quot; --location=us-central1-a --project &lt;PROJECT_ID&gt;
+</code></pre>
+<p>To ensure the instance uses the metadata ssh keys so will need to disable the OS login.</p>
+<pre><code class="language-bash">gcloud workbench instances update &lt;NOTEBOOK-NAME&gt; --metadata=enable-oslogin=false --location=us-central1-a --project &lt;PROJECT_ID&gt;
+</code></pre>
+<p>You can check the instance's UI if the metadata updated correctly.</p>
+<p><img alt="img_9.png" src="img_9.png" /></p>
+<h2 id="step-3-set-up-the-ssh-tunnel-and-interpreter">Step 3: Set up the SSH tunnel and interpreter</h2>
+<p>In a new project or existing one, go the bottom right at <code>Python Interpreter</code> &gt; <code>Add new Interpreter</code> &gt; <code>On SSH...</code></p>
+<p><img alt="img_17.png" src="img_17.png" /></p>
+<p>Host: is the static external IP address</p>
+<p>Port: 22</p>
+<p>Username: jupyter</p>
+<p><img alt="img_14.png" src="img_14.png" /></p>
+<p>Use <code>Key pair</code> with the path of the ssh key.
+<img alt="img_15.png" src="img_15.png" /></p>
+<p>Hopefully, you should be able to connect.
+<img alt="img_13.png" src="img_13.png" /></p>
+<p>Next is the interpreter path. This will depend on what what you want. You have the option for <code>python</code>, <code>pytorch</code>,
+<code>tensorflow</code>, like in Workbench.</p>
+<p><img alt="img_19.png" src="img_19.png" /></p>
+<p>I would like to use <code>pytouch</code>. So select <code>Conda Environment</code>, might take a moment to think, then select the <code>pytorch</code> 
+environment.</p>
+<p><img alt="img_18.png" src="img_18.png" /></p>
+<p>This takes a moment to set up. This is where we are copying the binaries from the managed instance to your local 
+machine.</p>
+<h2 id="step-4-create-a-new-jupyter-notebook-and-check-it-works">Step 4: Create a new Jupyter notebook and check it works</h2>
+<p>Create a new Jupyter notebook and run a cell to see if it works. Check out the menu bar. You can see that it's 
+tunnelling to the instance, with the <code>PyTorch</code> kernel that was set up in the interpreter. If you would like to use a
+different kernel, you can set it up in the new interpreter.</p>
+<p><img alt="img_20.png" src="img_20.png" /></p>
+<p>As a sanity check I run <code>import torch</code> and check if bigquery is auth correctly. Now you are good to go!</p>
+<h2 id="sources">Sources</h2>
+<p>https://cloud.google.com/compute/docs/connect/add-ssh-keys
+https://cloud.google.com/compute/docs/ip-addresses/configure-static-external-ip-address#console
+https://youtu.be/6RlgQBB1UDU
+https://www.jetbrains.com/help/pycharm/configuring-remote-interpreters-via-ssh.html#ssh</p>
+</section>
+
+<section id="mkdocs-terminal-after-content">
+    
+</section>
+
+            </main>
+        </div>
+        <hr><footer>
+    <div class="terminal-mkdocs-footer-grid">
+        <div id="terminal-mkdocs-footer-copyright-info">
+             Site built with <a href="http://www.mkdocs.org">MkDocs</a> and <a href="https://github.com/ntno/mkdocs-terminal">Terminal for MkDocs</a>.
+        </div>
+    </div>
+</footer>
+    </div>
+
+    
+    
+    
+</body>
+
+</html>
