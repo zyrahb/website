@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "website"
+version = "0.1.0"
+description = ""
+authors = ["zyrahb <zyrahbernardino@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+mkdocs-terminal = "*"
+mkdocs-simple-blog = "*"
+mkdocs-blogging-plugin = "*"
+mkdocstrings = { version = "^0.25", extras = ["python"] }
+mkdocs-section-index = "^0.3.8"
+taskipy = "^1.12.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.taskipy.tasks]
+docs = "mkdocs serve"
