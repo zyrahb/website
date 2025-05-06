@@ -2,7 +2,10 @@
 title: Mkdocs Website 
 description: A simple personal static website
 ---
+Dec 2024
+
 # Mkdocs Website
+
 
 [repo for this website](https://github.com/zyrahb/website)
 
